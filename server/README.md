@@ -4,9 +4,12 @@
 
 Examples only for javascript developers
 
+## Get Users All:
+
 ``` javascript
+// you can also use "axios" 
 async function getUsers() {
-  const url = 'http://localhost:8080/users/all';
+  const url = 'http://localhost:8080/users/all'; // GET method
   const request = await fetch(url);
   const response = await request.json();
   return response; 
@@ -42,5 +45,29 @@ async function getUsers() {
   }
 ]
 ```
+## Create a new User (Sign Up)
 
+``` js
+const createUser = async () => {
+  const url = ''
+  const request = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: 'your name', // your name must be contain greater than 5 characteres and less than 50
+      email: 'your email', 
+      password: 'your password' // no greater than 25 characterers and less than 6 
+    })
+  } )
+  const response = await request.json();
+  return response
+}
+// response: 
+{ 
+  response: 200, 
+  message: `the user: "user name", was created successfully` 
+}
+```
 
