@@ -1,8 +1,8 @@
-const Users = require("../../users/models/users.models");
-const bcrypt = require('bcryptjs');
-const uid = require('../helpers/uid');
+import Users from "../../users/models/users.models.js";
+import bcrypt from 'bcryptjs';
+import uid from '../helpers/uid.js';
 
-exports.createUser = async (req, res) => {
+export const createUser = async (req, res) => {
     const { email, password, name } = req.body;
     const emailExists = await Users.findOne({ where: { email } })
     if (!emailExists) {

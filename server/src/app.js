@@ -1,11 +1,12 @@
-const express = require("express");
-const cors = require('cors');
-const morgan = require("morgan");
-require('dotenv').config();
-const usersRouter = require('./server/users/routers/users.routers.js');
-const authRouter = require('./server/auth/routers/auth.routers.js');
+import express from "express";
+import cors from 'cors';
+import morgan from "morgan";
+import dotenv from 'dotenv';
+import usersRouter from './server/users/routers/users.routers.js';
+import authRouter from './server/auth/routers/auth.routers.js';
 const app = express();
 // middlewares
+dotenv.config();
 app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json());
@@ -15,4 +16,4 @@ app.set('port', process.env.PORT || 8080);
 app.use('/users', usersRouter)
 app.use('/auth', authRouter )
 
-module.exports = app;
+export default app;

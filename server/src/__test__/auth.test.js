@@ -1,5 +1,5 @@
-const request = require( 'supertest');
-const app = require('../app');
+import request from 'supertest';
+import app from'../app.js';
 
 describe('POST /auth/signup', () => {
   const data = {
@@ -17,14 +17,13 @@ describe('POST /auth/signup', () => {
     // expect(response.header["Content-Type"]).toMatch(/json/);
   })
 
-  // test('SignUp success - it should respond a 200 status code', async () => {
-  //   const response = await request(app)   
-  //     .post('/auth/signup')
-  //     .set('Accept', 'application/json') 
-  //     .send({name: 'user testl', email: "test@gmail", password: "test123"})
-  //   expect(response.body.response).toBe(200)
-  //   console.log(response.body);
-  // })
+  test('it should respond a 200 status code', async () => {
+    const response = await request(app)   
+      .post('/auth/signup')
+      .set('Accept', 'application/json') 
+      .send({name: 'user testl', email: "test@gmail", password: "test123"})
+    expect(response.statusCode).toBe(200)
+  })
   
   test('No user name - it should with arespond a bad request', async () => {
 

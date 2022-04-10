@@ -1,23 +1,23 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../../../config/database/db.connection.js");
+import { Sequelize } from "sequelize";
+import sequelize from "../../../config/database/db.connection.js";
 
 const users = sequelize.define('users', {
   id: {
     primaryKey: true,
-    type: DataTypes.TEXT
+    type: Sequelize.TEXT
   },
-  rool: DataTypes.TEXT, // cliente || administrador
-  name: DataTypes.TEXT, // no greater than 50 characterers and less than 10 
-  email: DataTypes.TEXT, 
-  password: DataTypes.TEXT, // no greater than 25 characterers and less than 6 
-  phone: DataTypes.INTEGER, // TODO: this section must be changed for text cause "+591 62565980"
-  photo: DataTypes.TEXT,
-  photo_id: DataTypes.TEXT,
-  verified: DataTypes.BOOLEAN,
-  admin: DataTypes.BOOLEAN,
-  key_email: DataTypes.TEXT // no greater than 12 chatanterers
+  rool: Sequelize.TEXT, // cliente || administrador
+  name: Sequelize.TEXT, // no greater than 50 characterers and less than 10 
+  email: Sequelize.TEXT, 
+  password: Sequelize.TEXT, // no greater than 25 characterers and less than 6 
+  phone: Sequelize.INTEGER, // TODO: this section must be changed for text cause "+591 62565980"
+  photo: Sequelize.TEXT,
+  photo_id: Sequelize.TEXT,
+  verified: Sequelize.BOOLEAN,
+  admin: Sequelize.BOOLEAN,
+  key_email: Sequelize.TEXT // no greater than 12 chatanterers
 }, {
   timestamps: false
 })
 
-module.exports = users;
+export default users;

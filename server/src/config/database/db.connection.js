@@ -1,5 +1,5 @@
-const { Sequelize } = require("sequelize");
-const config = require('../dotenv/config.js');
+import { Sequelize } from "sequelize";
+import config from '../dotenv/config.js';
 
 
 const sequelize = new Sequelize(config.dbName, config.dbUser, config.dbPasswd,  {
@@ -19,7 +19,7 @@ async function testDb() {
 
 testDb();
 
-module.exports = sequelize;
+export default sequelize;
 
 
 

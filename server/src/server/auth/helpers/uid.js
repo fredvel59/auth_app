@@ -1,5 +1,5 @@
 // code that generate a unique id 
-const generateString = require('./string')
+import generateString from './string.js';
 
 const uid = () => {
   const head = generateString(10) 
@@ -7,5 +7,5 @@ const uid = () => {
   return head + date
 }
 
-module.exports = uid;
+export default uid;
 
