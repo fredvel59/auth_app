@@ -49,7 +49,7 @@ async function getUsers() {
 
 ``` js
 const createUser = async () => {
-  const url = ''
+  const url = 'http://localhost:8080/auth/signup';
   const request = await fetch(url, {
     method: 'POST',
     headers: {
@@ -62,7 +62,7 @@ const createUser = async () => {
     })
   } )
   const response = await request.json();
-  return response
+  return response;
 }
 // response: 
 { 
