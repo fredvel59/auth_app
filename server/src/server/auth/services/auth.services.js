@@ -7,6 +7,8 @@ import generateString from "../helpers/string.js";
 // import existsEmail from 'email-existence';
 import jwt from "jsonwebtoken";
 import dotenv from '../../../config/dotenv/config.js';
+import admins from '../../../config/dotenv/config.js';
+
 
 
 export const createUser = async (req, res) => {
@@ -17,21 +19,42 @@ export const createUser = async (req, res) => {
             if (password.length > 6 & password.length < 25) {
                 if (email.length > 5) {
                     const passwd = await bcrypt.hash(password, 10)
-                    try {
-                        const user = await Users.create({
-                            id: uid(),
-                            name,
-                            email,
-                            key_email: generateString(12),
-                            password: passwd
-                        });
-                        confirmEmail(email, user.key_email, name);
-                        res.json({
-                            response: 200,
-                            message: `the user: ${name}, was created successfully, we sent you an email, now you need to confirm your email`
-                        })
-                    } catch (err) {
-                        res.send(err)
+                    if(email === admins.admin1 || email === admins.admin2 || email === admins.admin3) { // this code is for admins
+                        try {
+                            const user = await Users.create({
+                                id: uid(),
+                                name,
+                                email,
+                                key_email: generateString(12),
+                                password: passwd,
+                                rool: 'administrador',
+                                admin: true
+                            });
+                            confirmEmail(email, user.key_email, name);
+                            res.json({
+                                response: 200,
+                                message: `the user (ADMIN) : ${name}, was created successfully, we sent you an email, now you need to confirm your email`
+                            })
+                        } catch (err) {
+                            res.send(err)
+                        }
+                    }else { // this code is for common users
+                        try {
+                            const user = await Users.create({
+                                id: uid(),
+                                name,
+                                email,
+                                key_email: generateString(12),
+                                password: passwd
+                            });
+                            confirmEmail(email, user.key_email, name);
+                            res.json({
+                                response: 200,
+                                message: `the user: ${name}, was created successfully, we sent you an email, now you need to confirm your email`
+                            })
+                        } catch (err) {
+                            res.send(err)
+                        }
                     }
                 } else {
                     res.json({ response: 400, message: 'Your email is not exists please add a valid email' })
@@ -80,7 +103,6 @@ export const registerUser = async (req, res) => {
     }
 }
 
-
 export const confirm_Email = async (req, res) => {
     // ! DO NOT TOUCH THIS CODE 
     const {id} = req.params;
@@ -92,4 +114,8 @@ export const confirm_Email = async (req, res) => {
             message: `${user.name} your email was confirmed successfully`
         })
     }
+
 }
+
+
+

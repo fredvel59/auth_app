@@ -71,3 +71,29 @@ const createUser = async () => {
 }
 ```
 
+## Register User (LogIn)
+
+
+``` js
+const registerUser = async () => {
+  const url = 'http://localhost:8080/auth/login';
+  const request = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: 'your email', 
+      password: 'your password' // no greater than 25 characterers and less than 6 
+    })
+  } )
+  const response = await request.json();
+  return response;
+}
+// response: 
+{ 
+  auth: true || false, // if your password and email are correct 
+  token: 'your access token' 
+}
+```
+

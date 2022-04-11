@@ -7,4 +7,5 @@ router.post('/signup', createUser);
 router.post('/login', registerUser);
 router.get('/verifyEmail/:id', confirm_Email)
 
+
 export default router;
