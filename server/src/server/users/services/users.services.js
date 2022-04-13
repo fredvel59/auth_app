@@ -12,19 +12,17 @@ export const getAllUsers = async (_req, res) => {
 }
 
 
-// export const editUserName = (req, res) => {
-//     const {id} = req.params; 
-//     const { name, password, phone, photo } = req.body;
-//     if(name) {
+export const editUser = (req, res) => {
+    // const {id} = req.params;
+    const id = req.id;
+    const { name, password, phone } = req.body;
+    if(name) {
 
-//     }
-//     if(password) {
+    }
+    if(password) {
 
-//     } 
-//     if(phone) {
+    } 
+    if(phone) {
 
-//     }
-//     if(photo) {
-
-//     }
-// }
+    }
+}

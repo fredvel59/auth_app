@@ -11,8 +11,8 @@ const users = sequelize.define('users', {
   email: Sequelize.TEXT, 
   password: Sequelize.TEXT, // no greater than 25 characterers and less than 6 
   phone: Sequelize.INTEGER, // TODO: this section must be changed for text cause "+591 62565980"
-  photo: Sequelize.TEXT,
-  photo_id: Sequelize.TEXT,
+  // photo: Sequelize.TEXT,
+  // photo_id: Sequelize.TEXT,
   verified: Sequelize.BOOLEAN,
   admin: Sequelize.BOOLEAN,
   key_email: Sequelize.TEXT // no greater than 12 chatanterers

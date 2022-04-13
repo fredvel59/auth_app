@@ -10,6 +10,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
+    "set:test": "set NODE_OPTIONS=--experimental-vm-modules npx jest",
     "test": "jest --silent"
   },
   "keywords": [],

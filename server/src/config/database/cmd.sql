@@ -14,4 +14,7 @@ CREATE TABLE IF NOT EXISTS users (
   admin BOOLEAN DEFAULT false
 );
 
-ALTER TABLE users ALTER id TEXT NOT NULL;
+ALTER TABLE users ALTER id TEXT NOT NULL; 
+--  to remove a column
+ALTER TABLE users DROP photo;
+ALTER TABLE users DROP photo_id;
