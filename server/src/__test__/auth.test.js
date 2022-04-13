@@ -1,6 +1,6 @@
 import request from 'supertest';
 import app from '../app.js';
-
+export let accessToken = '';
 const server = request(app);
 
 describe('POST /auth/signup', () => {
@@ -123,6 +123,7 @@ describe('POST /auth/login', () => {
                 email: 'freddyvelarde59@gmail.com'
             })
         expect(response.body.auth).toBe(true)
+        accessToken = response.body.token
     });
     test('Password is not correct - It should respond with a bad request', async () => {
         const response = await server
